@@ -1,19 +1,34 @@
+import requests
+
 real=float(input('Quantos reais você quer converter ? R$'))
-dolar= real/5.20
-euro= real/6.00
-kwanza=real/0.0057
+
+url = 'https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,AOA-BR'
+dados = requests.get(url).json()
 
 
-opcao= int(input('Escolha a moeda : \n1-Dolar\n2-Euro\n3-Kwanza\n'))
+
+dolar = float(dados['USDBRL']['bid'])
+euro = float(dados['EURBRL']['bid'])
+kwanza = float(dados['AOABRL']['bid'])
+
+print('\nEscolha a moeda:')
+print('1 - Dólar')
+print('2 - Euro')
+print('3 - Kwanza')
+opcao = int(input('Opção:'))
+
 match opcao:
     case 1:
-        print('Sua conversão de R${:.2f} em dolar deu ${:.2f}'.format(real,dolar))
-
+        convertido = real / dolar
+        print(f'Sua conversão de R${real:.2f} em dólar deu ${convertido:.2f}')
     case 2:
-        print('Sua conversão de R${:.2f} em euro deu €{:.2f}'.format(real,euro))
+        convertido = real / euro
+        print(f'Sua conversão de R${real:.2f} em euro deu €{convertido:.2f}')
 
     case 3:
-        print('Sua conversão de R${:.2f} em kwanza deu {:.2f}Kz'.format(real,kwanza))
+        convertido = real / kwanza
+        print(f'Sua conversão de R${real:.2f} em kwanza deu {convertido:.2f} Kz')
 
     case _:
         print('opção inválida')
+
