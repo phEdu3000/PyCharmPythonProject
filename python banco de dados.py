@@ -7,4 +7,4 @@ conexao = mysql.connector.connect(
     database="Universidade"
 )
 
-print("Conectado com sucesso!")
+cursor = conexao.cursor()
