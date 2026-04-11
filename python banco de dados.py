@@ -19,7 +19,7 @@ for linha in dados:
 with open("alunos.csv","w", newline="", encoding="utf-8") as arquivo:
     writer = csv.writer(arquivo)
 
-    colunas = [desc[0]] for desc in cursor.description]
+    colunas = [desc[0] for desc in cursor.description]
     writer.writerow(colunas)
 
     writer.writerows(dados)
