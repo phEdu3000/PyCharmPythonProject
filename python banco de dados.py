@@ -8,3 +8,10 @@ conexao = mysql.connector.connect(
 )
 
 cursor = conexao.cursor()
+
+cursor.execute("select * from aluno")
+
+dados=cursor.fetchall()
+
+for linha in dados:
+    print(linha)
