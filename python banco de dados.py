@@ -21,3 +21,7 @@ with open("alunos.csv","w", newline="", encoding="utf-8") as arquivo:
 
     colunas = [desc[0]] for desc in cursor.description]
     writer.writerow(colunas)
+
+    writer.writerows(dados)
+
+print("Arquivo Csv salvo com sucesso!")
